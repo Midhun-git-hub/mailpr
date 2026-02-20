@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view , permission_classes
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from main_pr.main_app.tasks import send_test_email_task
+from .tasks import send_test_email_task
 from .serializers import *
 from .models import *
 from rest_framework.views import APIView
