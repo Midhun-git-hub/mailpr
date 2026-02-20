@@ -2,9 +2,8 @@ from celery import shared_task
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 import os
-from .utils import get_quote, get_finance_update, get_stock_update, get_workout_plan
+from .utils import get_quote, get_finance_update, get_stock_update, get_workout_plan, build_email_content
 from django.conf import settings
-from . views import build_email_content
 from . models import UserPreference
 
 @shared_task

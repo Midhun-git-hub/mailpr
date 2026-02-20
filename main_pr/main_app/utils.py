@@ -40,3 +40,24 @@ def get_workout_plan():
         "30-sec Jump Rope\n15 Pushups\n15 Situps",
     ]
     return "Workout tips:\n" + random.choice(workouts)
+
+
+def build_email_content(user):
+    content_parts = []
+
+    if hasattr(user, "preference"):
+        prefs = user.preference
+
+        if prefs.receive_motivation:
+            content_parts.append(get_quote())
+
+        if prefs.receive_finance:
+            content_parts.append(get_finance_update())
+
+        if prefs.receive_stocks:
+            content_parts.append(get_stock_update())
+
+        if prefs.receive_workout:
+            content_parts.append(get_workout_plan())
+
+    return "\n\n".join(content_parts)
