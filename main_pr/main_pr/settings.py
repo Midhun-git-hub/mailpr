@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'main_app',
     'django_celery_beat'
 ]
-
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -101,7 +101,7 @@ DATABASES = {
     }
 }
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
