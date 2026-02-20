@@ -1,0 +1,46 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+
+# Environment
+.env
+.venv/
+env/
+venv/
+ENV/
+celerybeat-schedule
+
+# Media and static files
+media/
+staticfiles/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Node modules (if using frontend)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
