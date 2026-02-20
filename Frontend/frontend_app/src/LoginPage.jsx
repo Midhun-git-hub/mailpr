@@ -10,7 +10,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/token/",
+        "https://mailpr.onrender.com/api/token/",
         { username, password }
       );
 

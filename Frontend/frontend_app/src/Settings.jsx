@@ -39,7 +39,7 @@ const Settings = () => {
 
         try {
             await axios.put(
-                "http://127.0.0.1:8000/api/update_email/",
+                "https://mailpr.onrender.com/api/update_email/",
                 { email },
                 {
                     headers: {
@@ -59,7 +59,7 @@ const Settings = () => {
 
     const sendTestEmail = async () => {
         await axios.post(
-            "http://127.0.0.1:8000/api/send_test_email/",
+            "https://mailpr.onrender.com/api/send_test_email/",
             {},
             {
                 headers: {
@@ -98,7 +98,7 @@ const Settings = () => {
 
         try {
             await axios.put(
-                "http://127.0.0.1:8000/api/change_password/",
+                "https://mailpr.onrender.com/api/change_password/",
                 passwordData,
                 {
                     headers: {

@@ -44,5 +44,13 @@ def send_weekly_emails():
 
     return f"Weekly emails sent to {weekly_users.count()} users!"
 
-
+@shared_task
+def send_test_email_task(user_email):
+    send_mail(
+        "Test Email 🚀",
+        "This is a test email from your app!",
+        "m20787549@gmail.com",
+        [user_email],
+        fail_silently=False,
+    )
 

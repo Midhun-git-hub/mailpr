@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view , permission_classes
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.response import Response
 from rest_framework import status
+from main_pr.main_app.tasks import send_test_email_task
 from .serializers import *
 from .models import *
 from rest_framework.views import APIView
@@ -94,15 +95,9 @@ def update_email(request):
 def send_test_email(request):
     user = request.user
 
-    send_mail(
-        "Test Email 🚀",
-        "This is a test email from your app!",
-        "m20787549@gmail.com",
-        [user.email],
-        fail_silently=False,
-    )
+    send_test_email_task.delay(user.email)
 
-    return Response({"message": "Test email sent!"})
+    return Response({"message": "Email queued successfully 🚀"})
 
 
 
