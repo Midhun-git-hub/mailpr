@@ -19,7 +19,7 @@ def send_resend_email(to_email, subject, message):
             "Content-Type": "application/json",
         },
         json={
-            "from": "onboarding@mailpr.onrender.com",
+            "from": "onboarding@resend.dev",
             "to": [to_email],
             "subject": subject,
             "text": message,
