@@ -9,6 +9,10 @@ const RegisterPage = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [wakingUp, setWakingUp] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,17 +23,52 @@ const RegisterPage = () => {
   };
 
   const handleRegister = async () => {
-    try {
-      await API.post("register/", formData);
-      alert("Registration successful! Please login.");
-      navigate("/");
-    } catch (err) {
-      console.log(err.response?.data);
+  setLoading(true);
+  setError("");
+  setWakingUp(false);
+
+  // Start a 10 second timer
+  const wakeTimer = setTimeout(() => {
+    setWakingUp(true);
+  }, 10000);
+
+  try {
+    await API.post("register/", formData);
+    navigate("/");
+  } catch (err) {
+    if (err.response?.data) {
+      setError("Registration failed. Username or email may already exist.");
+    } else {
+      setError("Something went wrong. Please try again.");
     }
-  };
+  } finally {
+    clearTimeout(wakeTimer);
+    setLoading(false);
+    setWakingUp(false);
+  }
+};
+
+  
 
   return (
     <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black p-6 overflow-hidden">
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+          <div className="text-center">
+            <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+            <p className="text-white tracking-widest text-lg animate-pulse">
+              CREATING YOUR EMPIRE...
+            </p>
+            {wakingUp && (
+        <p className="text-gray-400 text-sm mt-4">
+          Server is waking up. This may take 30–60 seconds.
+        </p>
+      )}
+          </div>
+        </div>
+      )}
 
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -60,6 +99,13 @@ const RegisterPage = () => {
             Create Account
           </h2>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-900/40 border border-red-700 rounded text-sm text-red-400 text-center">
+              {error}
+            </div>
+          )}
+
           <input
             type="text"
             name="username"
@@ -86,9 +132,14 @@ const RegisterPage = () => {
 
           <button
             onClick={handleRegister}
-            className="w-full bg-red-700 text-white py-3 rounded-lg hover:bg-red-800 transition duration-200 font-semibold tracking-wide"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg font-semibold tracking-wide transition duration-200 flex items-center justify-center
+              ${loading 
+                ? "bg-gray-700 cursor-not-allowed" 
+                : "bg-red-700 hover:bg-red-800"
+              }`}
           >
-            Sign Up
+            {loading ? "PROCESSING..." : "Sign Up"}
           </button>
 
           <p className="text-center mt-4 text-sm">

@@ -3,6 +3,7 @@
         "corsheaders",
         "dotenv",
         "loginbg",
+        "prefs",
         "qjpg",
         "simplejwt",
         "userpreference",
