@@ -29,7 +29,7 @@ app.conf.redis_backend_use_ssl = {
 app.conf.beat_schedule = {
     "send-daily-emails": {
         "task": "main_app.tasks.send_daily_emails",
-        "schedule": crontab(hour=12, minute=15),
+        "schedule": crontab(hour=12, minute=20),
     },
     "send-weekly-emails": {
         "task": "main_app.tasks.send_weekly_emails",
