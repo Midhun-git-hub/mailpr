@@ -14,3 +14,30 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+# Build Power 💪
+
+A full-stack email automation platform that delivers scheduled motivational emails.
+
+## 🚀 Tech Stack
+- React
+- Django REST Framework
+- JWT Authentication
+- Celery & Celery Beat
+- PostgreSQL
+- Render Deployment
+
+## 🔥 Features
+- User authentication
+- Background task scheduling
+- Automated daily & weekly emails
+- Cloud deployment
+- Email API integration (Resend)
+
+## ⚠️ Deployment Note
+Email sending requires verified domain configuration due to Resend testing restrictions.
+
+## 👨‍💻 Author
+Midhun
