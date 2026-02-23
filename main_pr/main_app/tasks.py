@@ -19,7 +19,7 @@ def send_resend_email(to_email, subject, message):
             "Content-Type": "application/json",
         },
         json={
-            "from": "onboarding@resend.dev",
+            "from": "upgradenow.lovestoblog.com",
             "to": [to_email],
             "subject": subject,
             "text": message,
